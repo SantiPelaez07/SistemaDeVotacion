@@ -1,19 +1,24 @@
-const mysql = require("mysql2")
+const mysql = require("mysql2/promise")
 
 
-const connection = mysql.createConnection({
+const pool = mysql.createPool({
     host: "localhost",
     database: "voting_system",
     user: "root",
     password: ""
 });
 
-connection.connect(function(error){
-    if(error) {
-        throw error;
-    }else {
-        console.log("Se conectó a la bd correctamente")
-    }
-})
 
-module.exports = connection;
+async function testConnection() {
+    try {
+        const connection = await pool.getConnection();
+        console.log("Se conectó a la bd correctamente");
+        connection.release();
+    } catch (error) {
+        console.error("Se presentó un error en la conexión: ", error);
+    }
+}
+
+testConnection();
+
+module.exports = pool;

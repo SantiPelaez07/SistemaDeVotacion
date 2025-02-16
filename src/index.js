@@ -1,9 +1,11 @@
 require("./config/database")
 const express = require("express");
-
+const voterRoutes = require("./routes/VoterRoutes");
 
 const app = express();
 app.use(express.json());
+
+app.use("/voters", voterRoutes);
 
 
 app.get("/", (req, res) => {

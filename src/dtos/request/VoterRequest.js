@@ -1,8 +1,7 @@
 class VoterRequest {
-    constructor({name, email, has_voted}){
+    constructor({name = "", email = ""}){
         this.name = name;
         this.email = email;
-        this.has_voted = has_voted;
     }
 }
 

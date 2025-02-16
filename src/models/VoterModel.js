@@ -1,36 +1,58 @@
+require("express");
 const pool = require("../config/database");
+const VoterRequest = require("../dtos/request/VoterRequest");
 
 
-const voter = {
-    async createVoter(id, name, email, has_voted){
-        const [result] = await pool.execute(
-            "INSERT INTO voter (name, email, has_voted) VALUES (?,?,?)",
-            [name, email, has_voted]
-        );
+    async function createVoter(req){
+        try{
+            const requestVoter = new VoterRequest(req)
+            const result = await pool.execute(
+                "INSERT INTO voter (name, email, has_voted) VALUES (?,?,?)",
+                [requestVoter.name, requestVoter.email, false]
+            );
+            if(result[0].insertId == undefined){
+                throw new error("InsertID is undefined ", error);
+                
+            }
+    
+            const idVoterCreated = result[0].insertId;
+            console.log("Id result: ", idVoterCreated);
+            const voter = await getVoterById(idVoterCreated);
+            console.log("Voter creado: ", voter);
+    
+            return voter;
+        } catch (error){
+            console.log("Error en createVoter: ", error);
+            throw error;
+        }
+        
+    }
 
-        return result;
-    },
-
-    async getVoters(){
-        const [voters] = await pool.execute(
+    async function getVoters(){
+        const voters = await pool.execute(
             "SELECT * FROM voter"
         )
-        return voters;
-    },
+        return [voters];
+    }
 
-    async getVoterById(id){
+    async function getVoterById(id){
         const [voter] = await pool.execute(
             "SELECT * FROM voter WHERE id = ?",
             [id]
         );
-        return voter;
-    },
+        return voter.length > 0 ? voter[0] : null;
+    }
 
-    async deleteVoter(id){
-        const [deleteVoter] = await pool.execute(
+    async function deleteVoter(id){
+        const voter = await getVoterById(id);
+        if(!voter){
+            throw new Error("Voter not found.")
+        }
+        await pool.execute(
             "DELETE FROM voter WHERE id = ?",
             [id]
-        );
-        return deleteVoter;
+    );
+        return voter;
     }
-}
+
+module.exports = { createVoter, getVoters, getVoterById, deleteVoter };
