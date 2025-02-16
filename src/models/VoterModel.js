@@ -14,16 +14,12 @@ const VoterRequest = require("../dtos/request/VoterRequest");
                 throw new error("InsertID is undefined ", error);
                 
             }
-    
             const idVoterCreated = result[0].insertId;
-            console.log("Id result: ", idVoterCreated);
             const voter = await getVoterById(idVoterCreated);
-            console.log("Voter creado: ", voter);
     
             return voter;
         } catch (error){
-            console.log("Error en createVoter: ", error);
-            throw error;
+            console.error("An error occurred: ", error);
         }
         
     }
@@ -31,7 +27,7 @@ const VoterRequest = require("../dtos/request/VoterRequest");
     async function getVoters(){
         const voters = await pool.execute(
             "SELECT * FROM voter"
-        )
+        );
         return [voters];
     }
 
@@ -46,7 +42,7 @@ const VoterRequest = require("../dtos/request/VoterRequest");
     async function deleteVoter(id){
         const voter = await getVoterById(id);
         if(!voter){
-            throw new Error("Voter not found.")
+            throw new Error("Voter not found.");
         }
         await pool.execute(
             "DELETE FROM voter WHERE id = ?",

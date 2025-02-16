@@ -1,11 +1,13 @@
 require("./config/database")
 const express = require("express");
 const voterRoutes = require("./routes/VoterRoutes");
+const candidateRouter = require("./routes/CandidateRouter");
 
 const app = express();
 app.use(express.json());
 
-app.use("/voters", voterRoutes);
+app.use("/voter", voterRoutes);
+app.use("/candidate", candidateRouter);
 
 
 app.get("/", (req, res) => {

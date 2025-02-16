@@ -14,7 +14,6 @@ class voterService {
     }
 
     async getByIdVoter(id){
-        console.log("ID en el service: ", id)
             return voterModel.getVoterById(id);
     }
 

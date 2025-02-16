@@ -23,7 +23,7 @@ const voterController = {
             res.status(200).json({
                 message: "Registered Voters",
                 voters: voters
-            })
+            });
         } catch (error) {
             res.status(500).json({
                 message: "Error displaying all voters",
@@ -57,13 +57,18 @@ const voterController = {
         const { id } = req.params;
         try {
             const voter = await voterService.deleteVoter(id);
+            if(!voter){
+                res.status(400).json({
+                    message: "Voter not found"
+                });
+            }
             res.status(200).json({
                 message: "Voter successfully removed",
                 voter: voter
             })
         } catch (error) {
             res.status(500).json({
-                message: "Error in searching for the user to delete",
+                message: "Error in searching for the voter to delete",
                 error: error.message
             })
         }
