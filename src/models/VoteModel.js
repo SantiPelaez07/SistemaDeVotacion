@@ -14,7 +14,7 @@ async function createVote(req) {
             [rq.voter_id]
         );
 
-        const statusVoted = voter[0].has_voted;
+        let statusVoted = false;
 
         if(candidate.length === 0){
             throw new Error(`The candidate with the ID: ${rq.candidate_id} does not exist in the BD.`);
@@ -22,6 +22,8 @@ async function createVote(req) {
 
         if(voter.length === 0){
             throw new Error(`The voter with the ID: ${rq.voter_id}, does not exist in the DB.`);
+        }else {
+            statusVoted = voter[0].has_voted;
         }
 
 
@@ -77,7 +79,6 @@ async function getstatistics() {
         "SELECT * FROM candidate",
 
     );
-    console.log("Estos son los candidatos desde el model: ", candidates);
 
     const [totalVotersResult] = await db.execute(
         "SELECT COUNT(*) AS nv FROM vote"
@@ -101,8 +102,6 @@ async function getstatistics() {
         };
         newStatistics.push(statistics);
     });
-  
-console.log("Lista nueva del model despues de recorer: ", newStatistics)
 
     return newStatistics;
 }

@@ -41,7 +41,6 @@ const voteController = {
     async getStatistics(req,res){
         try {
             const statistics = await voteService.getStatistics();
-            console.log("Esta es la lista desde el controller: ", statistics);
             res.status(200).json({
                 message: `Candidates statistics.`,
                 statistics: statistics

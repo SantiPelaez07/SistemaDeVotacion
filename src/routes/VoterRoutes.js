@@ -1,6 +1,7 @@
 const express = require("express");
 const voterController = require("../controllers/VoterController");
 
+
 const router = express.Router();
 router.post("/register", voterController.registerVoter);
 router.get("/", voterController.getAllVoters);
