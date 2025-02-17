@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "633f081d-1259-4446-8356-7dcee4b4d79d",
+		"name": "Sistema de votaciones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34451392"
+	},
+	"item": [
+		{
+			"name": "Voter",
+			"item": [
+				{
+					"name": "Create Voter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Luisa Jimenez\",\r\n    \"email\": \"luisa2004@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/voters/RegisterVoter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"voters",
+								"RegisterVoter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Voters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/voters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"voters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Voter by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/voters/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"voters",
+								"27"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Voter",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/voters/27",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"voters",
+								"27"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Se crearon los endpoints necesarios para realizar las funciones correspondientes, en este caso:\n\n- Post (Crear nuevo votante)\n    \n- Get (Listar todos los votantes)\n    \n- Get (Listar un votante por ID)\n    \n- Delete (Eliminar un votante por id)"
+		},
+		{
+			"name": "Candidate",
+			"item": [
+				{
+					"name": "Create Candidate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/candidate/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"candidate",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Candidates",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get by id Candidate",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Candidate",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/candidate/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"candidate",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Se crearon los endpoints necesarios para realizar las funciones correspondientes, en este caso:\n\n- Post (Crear nuevo candidato)\n    \n- Get (Listar todos los candidatos)\n    \n- Get (Listar un candidato por ID)\n    \n- Delete (Eliminar un candidato por id)"
+		},
+		{
+			"name": "Vote",
+			"item": [
+				{
+					"name": "Create Vote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"voter_id\": 1,\r\n    \"candidate_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/vote/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vote",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Votes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vote",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/vote/statistics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"vote",
+								"statistics"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Se crearon los endpoints necesarios para realizar las funciones correspondientes, en este caso:\n\n- Post (Crear un nuevo voto)\n    \n- Get (Listar todos los votos)\n    \n- Get (Listar todos los candidatos con estadíasticas por sus votos)"
+		}
+	]
+}
