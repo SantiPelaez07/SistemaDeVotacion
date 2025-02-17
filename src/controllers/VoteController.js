@@ -4,7 +4,6 @@ const voteController = {
     async createVote(req,res){
         try {
             const vote = await voteService.createVote(req.body);
-            console.log("El request que recibe el controller: ", req.body);
             res.status(201).json({
                 message: "Vote registered successfully",
                 vote: vote
