@@ -4,7 +4,6 @@ const VoteRequest = require("../dtos/request/VoteRequest");
 async function createVote(req) {
     try {
         const rq = new VoteRequest(req);
-        console.log("Este es el request del model: ", rq);
         const [candidate] = await db.execute(
             "SELECT * FROM candidate WHERE id = ?",
             [rq.candidate_id]
@@ -15,6 +14,8 @@ async function createVote(req) {
             [rq.voter_id]
         );
 
+        const statusVoted = voter[0].has_voted;
+
         if(candidate.length === 0){
             throw new Error(`The candidate with the ID: ${rq.candidate_id} does not exist in the BD.`);
         }
@@ -23,16 +24,26 @@ async function createVote(req) {
             throw new Error(`The voter with the ID: ${rq.voter_id}, does not exist in the DB.`);
         }
 
+
+        if(statusVoted){
+          throw new Error(`The voter has alredy cast a Vote`);
+        }
+
         const result = await db.execute(
             "INSERT INTO vote (voter_id, candidate_id) VALUES (?,?)",
             [rq.voter_id, rq.candidate_id]
         );
+        
 
         await db.execute(
             "UPDATE candidate SET votes = votes + 1 WHERE id = ?",
             [rq.candidate_id]
         );
 
+        await db.execute(
+            "UPDATE voter SET has_voted = true WHERE id = ?",
+            [rq.voter_id]
+        );
         if(result[0].insertId == undefined){
             throw new error("Error getting created id: ", error);
         }
