@@ -44,6 +44,6 @@ En mi caso utilicé XAMPP para inicializar un servidor local que me permite ejec
 - Registro exitoso de un candidato<br>
 ![Registro exitoso de un candidato](/images/image-1.png)
 - Registro exitoso del voto<br>
-![Registro exitoso del voto](/images/image-2.png)
+![Registro exitoso del voto](/images/image-2.png)<br>
 -Muestra exitosa de las estadísticas del candidatos frente a los votos<br>
 ![Muestra exitosa de las estadísticas del candidatos frente a los votos](/images/image-3.png)
