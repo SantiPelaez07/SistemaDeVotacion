@@ -39,7 +39,11 @@ En mi caso utilicé XAMPP para inicializar un servidor local que me permite ejec
   y así lograr una ejecución más rápida en la prueba del mismo.
 
 # Ejemplos de uso de la API
+- Registro exitoso de un votante
 ![Registro exitoso de un votante](image.png)
+- Registro exitoso de un candidato
 ![Registro exitoso de un candidato](image-1.png)
+- Registro exitoso del voto
 ![Registro exitoso del voto](image-2.png)
+-Muestra exitosa de las estadísticas del candidatos frente a los votos
 ![Muestra exitosa de las estadísticas del candidatos frente a los votos](image-3.png)
