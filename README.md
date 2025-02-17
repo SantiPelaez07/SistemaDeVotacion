@@ -1,10 +1,10 @@
-# Sistema De Votacion
+# Sistema De Votación
 Este repositorio se creará con el fin de construir un producto Backend enfocado en un control de votaciones.
 
 
 # Instrucciones para iniciar el proyecto de manera local
 - El modelo está basado en una base de datos relacional(SQL).
-Por lo tanto aquí dejaré las querys necesarias para la creación de la base de datos de manera local:
+- Por lo tanto aquí dejaré las querys necesarias para la creación de la base de datos de manera local:
 - (<br>
     create database voting_system;
     use voting_system;
@@ -39,11 +39,11 @@ En mi caso utilicé XAMPP para inicializar un servidor local que me permite ejec
   y así lograr una ejecución más rápida en la prueba del mismo.
 
 # Ejemplos de uso de la API
-- Registro exitoso de un votante.<br>
+- Registro exitoso de un votante: <br><br>
 ![Registro exitoso de un votante](/images/image.png)
-- Registro exitoso de un candidato<br>
+- Registro exitoso de un candidato: <br><br>
 ![Registro exitoso de un candidato](/images/image-1.png)
-- Registro exitoso del voto<br>
+- Registro exitoso del voto: <br><br>
 ![Registro exitoso del voto](/images/image-2.png)<br>
--Muestra exitosa de las estadísticas del candidatos frente a los votos<br>
+- Muestra exitosa de las estadísticas del candidatos frente a los votos:<br><br>
 ![Muestra exitosa de las estadísticas del candidatos frente a los votos](/images/image-3.png)
